@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { Chord } from 'tonal'
+import 'bootstrap/dist/css/bootstrap.css'
 
 var cooleys = `
 D2|:"Em"EB{c}BA B2 EB|~B2 AB dBAG|"D"FDAD BDAD|FDAD dAFD|
@@ -20,6 +21,14 @@ class App extends Component {
       }]
     })
   }
+  remove(i){
+    this.setState({
+      chords: [
+        ...this.state.chords.slice(0, i),
+        ...this.state.chords.slice(i + 1)
+      ]
+    })
+  }
   render() {
     const {chord, chords} = this.state
 
@@ -27,16 +36,24 @@ class App extends Component {
       <div className="App" style={styles.base}>
         <h1>Chord Pocket</h1>
         <form onSubmit={this.onSubmit}>
-          <input 
+          <div className="input-group">
+          <input className="form-control"
+            autoFocus
             placeholder="Type a chord here"
             value={chord} onChange={e => this.setState({chord: e.target.value})}/>
-          <button>Add</button>
+          <span className="input-group-btn">
+          <button className="btn btn-secondary">Add</button>
+          </span>
+          </div>
         </form>
-        <ul style={styles.list}>
+        <ul className="list-group" style={styles.list}>
         {
           chords.map((chord, i) => {
-            return <li key={i}>
-              {chord.name}: {chord.notes.join(' ')}
+            return <li className="list-group-item" key={i}>
+              {chord.name}: {chord.notes.join(' ')}{' '} 
+              <button type="button" 
+                style={styles.removeBtn}
+                className="btn btn-sm btn-outline-dark" onClick={() => this.remove(i)}>&#10006;</button>
             </li>
           })
         }
@@ -51,8 +68,12 @@ export default App;
 const styles = {
   base: {
     //paddingTop: 20
+    padding: 20
   },
   list: {
-    listStyleType: 'none'
+    marginTop: 20
+  },
+  removeBtn:{
+    float: 'right'
   }
 }
