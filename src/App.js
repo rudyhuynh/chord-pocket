@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import { Chord } from 'tonal'
 import 'bootstrap/dist/css/bootstrap.css'
