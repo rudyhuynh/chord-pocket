@@ -8,6 +8,7 @@
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-scripts": "1.0.17",
+    "react-split-pane": "^0.1.91",
     "tonal": "^1.1.0"
   },
   "lint-staged": {
