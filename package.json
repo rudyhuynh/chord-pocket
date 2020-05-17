@@ -5,10 +5,20 @@
   "dependencies": {
     "bootstrap": "4.0.0-beta.2",
     "gh-pages": "^1.1.0",
-    "react": "^16.1.1",
-    "react-dom": "^16.1.1",
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
     "react-scripts": "1.0.17",
     "tonal": "^1.1.0"
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+      "prettier --write"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
   "scripts": {
     "predeploy": "npm run build",
@@ -18,5 +28,10 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "homepage": "https://rudyhuynh.github.io/chord-pocket"
+  "homepage": "https://rudyhuynh.github.io/chord-pocket",
+  "devDependencies": {
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.2",
+    "prettier": "^2.0.5"
+  }
 }
