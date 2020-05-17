@@ -8,11 +8,12 @@ import SplitPane from "react-split-pane";
 import "bootstrap/dist/css/bootstrap.css";
 import "./SplitPane.css";
 
+const defaultLeftWidth = (document.body.clientWidth * 63) / 100;
+
 const App = () => {
   const [width, setWidth] = React.useState(document.body.clientWidth);
   const [leftWidth, setLeftWidth] = React.useState(
-    parseInt(localStorage.getItem("splitPos"), 10) ||
-      (document.body.clientWidth * 80) / 100
+    parseInt(localStorage.getItem("splitPos"), 10) || defaultLeftWidth
   );
 
   React.useEffect(() => {
